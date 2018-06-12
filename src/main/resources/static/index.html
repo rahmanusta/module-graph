@@ -30,25 +30,11 @@
 <div id="placeholder"></div>
 <script type="text/javascript">
 
-    var nodes = new vis.DataSet([
-        {id: 'java.base', label: 'java.base'},
-        {id: 'java.logging', label: 'java.logging'},
-        {id: 'java.sql', label: 'java.sql'}
-    ]);
-
-    // create an array with edges
-    var edges = new vis.DataSet([
-        {from: 'java.sql', to: 'java.base'},
-        {from: 'java.sql', to: 'java.logging'},
-        {from: 'java.logging', to: 'java.base'}
-    ]);
-
-
     function showGraph(json) {
         var container = document.getElementById('placeholder');
         var data = {
-            nodes: nodes,
-            edges: edges
+            nodes: json.nodes,
+            edges: json.edges
         };
         var options = {
             nodes: {

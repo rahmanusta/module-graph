@@ -12,7 +12,7 @@ Set<Requires> requires = module.getDescriptor().requires();
 
 With these two simple command, we can create a module relation graph in Java side.
 
-To visualize this module relation, I prefered http://visjs.org/[visjs]. With visjs we can create network graphs like below.
+To visualize module relations, http://visjs.org/[visjs] is used. It is easy to create network graphs with visjs. Take a look at the following code snippet.
 
 [source,javascript]
 ----
@@ -43,8 +43,6 @@ To visualize this module relation, I prefered http://visjs.org/[visjs]. With vis
 The view should be like below.
 
 image::basic-graph.png[]
-
-As we see, we can create network graph like above.
 
 Let's create whole alive module graph visualizer.
 
