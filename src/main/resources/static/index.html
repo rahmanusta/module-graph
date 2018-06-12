@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <title>Jigsaw Module Graph</title>
+
+    <style>
+        body {
+            color: #d3d3d3;
+            font: 12pt arial;
+            background-color: #ffffff;
+        }
+
+        #placeholder {
+            width: 800px;
+            height: 640px;
+            border: 1px solid #444444;
+            background-color: #e7e7e7;
+            position: relative;
+        }
+    </style>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+
+<div id="placeholder"></div>
+<script type="text/javascript">
+
+    var nodes = new vis.DataSet([
+        {id: 'java.base', label: 'java.base'},
+        {id: 'java.logging', label: 'java.logging'},
+        {id: 'java.sql', label: 'java.sql'}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 'java.sql', to: 'java.base'},
+        {from: 'java.sql', to: 'java.logging'},
+        {from: 'java.logging', to: 'java.base'}
+    ]);
+
+
+    function showGraph(json) {
+        var container = document.getElementById('placeholder');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+            nodes: {
+                shape: "ellipse",
+            },
+            edges: {
+                arrows: {
+                    to: {
+                        enabled: true,
+                        scaleFactor: 0.5
+                    }
+                }
+            },
+            physics: {
+                minVelocity: 0.75,
+                solver: "repulsion"
+            }
+        };
+        network = new vis.Network(container, data, options);
+    }
+
+    fetch("/modules")
+        .then(function (res) {
+            return res.json()
+        })
+        .then(showGraph);
+
+</script>
+</body>
+</html>
