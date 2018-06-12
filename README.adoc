@@ -10,7 +10,7 @@ Set<Module> modules = ModuleLayer.boot().modules();
 Set<Requires> requires = module.getDescriptor().requires();
 ----
 
-With these two simple command, we can create a module relation graph in Java side.
+With these two simple command, we can access to module relation graph in a running application.
 
 To visualize module relations, http://visjs.org/[visjs] can be used. It is easy to create network graphs with visjs. Take a look at the following code snippet.
 
