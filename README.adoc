@@ -12,7 +12,7 @@ Set<Requires> requires = module.getDescriptor().requires();
 
 With these two simple command, we can create a module relation graph in Java side.
 
-To visualize module relations, http://visjs.org/[visjs] is used. It is easy to create network graphs with visjs. Take a look at the following code snippet.
+To visualize module relations, http://visjs.org/[visjs] can be used. It is easy to create network graphs with visjs. Take a look at the following code snippet.
 
 [source,javascript]
 ----
@@ -117,6 +117,10 @@ public class ModuleGraphController {
 
 That's all!
 
+Result
+
+image::module-graph.png[]
+
 To run the demo
 
 [source,bash]
@@ -126,9 +130,15 @@ java -jar target/module-graph.jar
 //  Then open http://localhost:8080
 ----
 
-Result
+or
 
-image::module-graph.png[]
+[source,bash]
+----
+mvn clean install
+docker build -t rahmanusta/module-graph .
+docker run -it -p 8080:8080 rahmanusta/module-graph
+//  Then open http://localhost:8080
+----
 
-Thank you!
+See you!
 
