@@ -53,7 +53,8 @@ public class Node {
     private String id;
     private String label;
 
-    // getters, setters, constructors
+    // getters, setters, constructor
+}
 ----
 
 Node.java represents Node data. Each module name will have one node.
@@ -66,10 +67,10 @@ public class Edge {
     private String to;
 
     // getters, setters, constructors
+}
 ----
 
 Edge.java represents edge between two node.
-
 
 [source,java]
 .ModuleGraphController.java
